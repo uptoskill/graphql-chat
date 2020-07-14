@@ -1,8 +1,8 @@
 import {
   ApolloClient, ApolloLink, HttpLink, InMemoryCache, split
-} from 'apollo-boost';
-import { WebSocketLink } from 'apollo-link-ws';
-import { getMainDefinition } from 'apollo-utilities';
+} from '@apollo/client';
+import { WebSocketLink } from '@apollo/client/link/ws';
+import { getMainDefinition } from '@apollo/client/utilities';
 import { getAccessToken } from '../auth';
 
 const httpUrl = 'http://localhost:9000/graphql';
