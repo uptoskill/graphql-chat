@@ -1,6 +1,5 @@
 const fs = require('fs');
 const { ApolloServer } = require('apollo-server-express');
-const bodyParser = require('body-parser');
 const cors = require('cors');
 const express = require('express');
 const expressJwt = require('express-jwt');
@@ -11,9 +10,10 @@ const port = 9000;
 const jwtSecret = Buffer.from('xkMBdsE+P6242Z2dPV3RD91BPbLIko7t', 'base64');
 
 const app = express();
-app.use(cors(), bodyParser.json(), expressJwt({
+app.use(cors(), express.json(), expressJwt({
   credentialsRequired: false,
-  secret: jwtSecret
+  secret: jwtSecret,
+  algorithms: ['HS256']
 }));
 
 const typeDefs = fs.readFileSync('./schema.graphql', {encoding: 'utf8'});
